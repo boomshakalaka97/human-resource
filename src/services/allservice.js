@@ -6,6 +6,9 @@ export default class AllService {
       signIn: '/user/signIn',
       addMessage: '/employee/add',
       signUp: '/user/signUp',
+      getEmployeeByNature_work:'/employee/findByNature_work',
+      getEmployeeBySituation:'/employee/findBySituation',
+      getAllEmployee:'/employee/findAllEmployee',
       getOrderDetailByStudentId: '/order/findByStudentId',
       getOrderDetailByTeacherId: '/order/findByTeacherId',
       getTimeSlotDetail: '/timeSlot/find',
@@ -129,6 +132,36 @@ export default class AllService {
       }
     }, "application/json");
   }
+
+  getEmployeeByNature_work(params, callback){
+    var url = this.host + this.method.getEmployeeByNature_work;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  getEmployeeBySituation(params, callback){
+    var url = this.host + this.method.getEmployeeBySituation;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+
+  getAllEmployee(params,callback){
+    var url = this.host + this.method.getAllEmployee;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+/****** 方法的具体实现 不能只填写上方字典的方法名    *****/
 
   getOrderDetailByStudentId(params, callback){
     var url = this.host + this.method.getOrderDetailByStudentId;
