@@ -15,8 +15,8 @@
     </el-form-item>
     <el-form-item label="出生年月" required>
       <el-col :span="11">
-        <el-form-item prop="date1">
-          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+        <el-form-item prop="birth">
+          <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.birth" style="width: 100%;"></el-date-picker>
         </el-form-item>
       </el-col>
     </el-form-item>
@@ -27,26 +27,26 @@
         </el-radio-group>
       </el-form-item>
     <el-form-item label="文化程度">
-      <el-select v-model="ruleForm.culture" placeholder="文化程度">
-        <el-option label="高中" value="high"></el-option>
-        <el-option label="本科" value="college"></el-option>
-          <el-option label="研究生" value="graduate"></el-option>
+      <el-select v-model="ruleForm.level" placeholder="文化程度">
+        <el-option label="高中" value="1"></el-option>
+        <el-option label="本科" value="2"></el-option>
+          <el-option label="研究生" value="3"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="职务">
       <el-select v-model="ruleForm.post" placeholder="职务">
-        <el-option label="总监" value="post1"></el-option>
-        <el-option label="经理" value="post2"></el-option>
-        <el-option label="主管" value="post3"></el-option>
-        <el-option label="助理" value="post4"></el-option>
-        <el-option label="工程师" value="post5"></el-option>
+        <el-option label="总监" value="1"></el-option>
+        <el-option label="经理" value="2"></el-option>
+        <el-option label="主管" value="3"></el-option>
+        <el-option label="助理" value="4"></el-option>
+        <el-option label="工程师" value="5"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="职位级别">
       <el-select v-model="ruleForm.rank" placeholder="级别">
-        <el-option label="级别1" value="rank1"></el-option>
-        <el-option label="级别2" value="rank2"></el-option>
-        <el-option label="级别3" value="rank3"></el-option>
+        <el-option label="级别1" value="1"></el-option>
+        <el-option label="级别2" value="2"></el-option>
+        <el-option label="级别3" value="3"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="籍贯" prop="birthplace">
@@ -71,20 +71,26 @@
 
     <el-form-item label="所属部门">
       <el-select v-model="ruleForm.depart" placeholder="部门">
-        <el-option label="技术部" value="depart1"></el-option>
-        <el-option label="推广部" value="depart2"></el-option>
-        <el-option label="客服部" value="depart3"></el-option>
-        <el-option label="财务部" value="depart3"></el-option>
-        <el-option label="行政部" value="depart3"></el-option>
+        <el-option label="技术部" value="1"></el-option>
+        <el-option label="推广部" value="2"></el-option>
+        <el-option label="客服部" value="3"></el-option>
+        <el-option label="财务部" value="4"></el-option>
+        <el-option label="行政部" value="5"></el-option>
       </el-select>
     </el-form-item>
 
 
-    <el-form-item label="入职状态" prop="resource">
-      <el-radio-group v-model="ruleForm.conditon">
+    <el-form-item label="工作性质" prop="nature_work">
+      <el-radio-group v-model="ruleForm.nature_work">
         <el-radio label="实习"></el-radio>
         <el-radio label="全职"></el-radio>
         <el-radio label="兼职"></el-radio>
+      </el-radio-group>
+    </el-form-item>
+    <el-form-item label="员工状态" prop="condition">
+      <el-radio-group v-model="ruleForm.condition">
+        <el-radio label="试用"></el-radio>
+        <el-radio label="正式"></el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item>
@@ -102,12 +108,13 @@
       data() {
         return {
           ruleForm: {
+            identity: '',
             name: '',
             sex: '',
             nation: '',
-            date1: '',
+            birth: '',
             marry: '',
-            culture: '',
+            level: '',
             post: '',
             rank: '',
             birthplace: '',
@@ -116,12 +123,13 @@
             address: '',
             date2: '',
             depart: '',
+            nature_work:'',
             condition: '',
           },
           rules: {
             name: [
               { required: true, message: '请输入姓名', trigger: 'blur' },
-              { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+              { min: 3, max: 8, message: '长度在 3 到 8 个字符', trigger: 'blur' }
             ],
             sex: [
               { required: true, message: '请选择性别', trigger: 'change' }
@@ -129,7 +137,7 @@
             nation: [
               { required: true, message: '请输入民族', trigger: 'blur' },
             ],
-            date1: [
+            birth: [
               { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
             ],
             post: [
@@ -150,6 +158,9 @@
             ],
             address: [
               { required: true, message: '请输入地址', trigger: 'blur' },
+            ],
+            nature_work: [
+              { required: true, message: '请选择工作性质', trigger: 'change' }
             ],
             condition: [
               { required: true, message: '请选择入职状态', trigger: 'change' }
@@ -174,21 +185,23 @@
         },
         input () {
           var params={
-            name:this.ruleForm.name,
+            emid:this.ruleForm.identity,
+            emname:this.ruleForm.name,
             sex:this.ruleForm.sex,
             nation:this.ruleForm.nation,
-            date1:this.ruleForm.date1,
-            marry:this.ruleForm.marry,
-            culture:this.ruleForm.culture,
-            post:this.ruleForm.post,
-            rank:this.ruleForm.rank,
+            birth:this.ruleForm.birth,
+            marriage:this.ruleForm.marry,
+            level_id:this.ruleForm.level,
+            postId:this.ruleForm.post,
+            rankId:this.ruleForm.rank,
             birthplace:this.ruleForm.birthplace,
-            id_num:this.ruleForm.id_num,
+            idnum:this.ruleForm.id_num,
             school:this.ruleForm.school,
             address:this.ruleForm.address,
-            date2:this.ruleForm.date2,
-            depart:this.ruleForm.depart,
-            condition:this.ruleForm.condition,
+            departId:this.ruleForm.depart,
+            datecome:this.ruleForm.date2,
+            nature_work:this.ruleForm.nature_work,
+            situation:this.ruleForm.condition,
           }
 
           allService.addMessage(params, (isOk, data) => {
