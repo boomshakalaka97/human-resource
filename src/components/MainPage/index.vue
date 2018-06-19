@@ -6,7 +6,7 @@
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>员工管理</template>
         <el-menu-item-group>
-          <el-menu-item index="1-1" route="/input">员工信息</el-menu-item>
+          <el-menu-item index="1-1" route="">员工信息</el-menu-item>
           <el-menu-item index="1-2" route="/input">信息录入</el-menu-item>
           <el-menu-item index="1-3">修改信息</el-menu-item>
         </el-menu-item-group>

@@ -64,7 +64,7 @@
             }else {
 
 
-                this.$router.push('/MainPage/index');
+                this.$router.push('/index');
 
               this.$message.success("登录成功！");
             }

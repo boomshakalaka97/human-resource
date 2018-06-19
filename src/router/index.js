@@ -6,6 +6,7 @@ const index = resolve => require(['../components/index.vue'], resolve)
 const Login = resolve => require(['../components/Login/login.vue'], resolve)
 const Register = resolve => require(['../components/Register/register.vue'], resolve)
 const studentIndex = resolve => require(['../components/MainPage/index.vue'], resolve)
+const input = resolve => require(['../components/operate/input.vue'], resolve)
 /*const studentInfo = resolve => require(['../components/Student/personalCenter.vue'], resolve)
 const teacherIndex = resolve => require(['../components/Teacher/index.vue'], resolve)
 const addOrder = resolve => require(['../components/Teacher/addOrder.vue'], resolve)
@@ -21,6 +22,7 @@ const routes = [
     component: index,
     name: 'index'
   },
+
   {
     path: '/login',
     component: Login,
@@ -32,10 +34,20 @@ const routes = [
     name: 'register'
   },
   {
-    path: '/MainPage/index',
+    path: '/index',
     component: studentIndex,
     name: 'studentIndex'
-  }/*,
+  },
+  {
+    path: '/',
+    component: studentIndex,
+    children: [{
+      path: 'input',
+      name: 'input',
+      component: input
+    }]
+  },
+  /*,
   {
     path: '/student/infopage',
     component: studentInfo,
