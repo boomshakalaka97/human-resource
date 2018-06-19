@@ -5,7 +5,8 @@ import Vuex from 'vuex'
 const index = resolve => require(['../components/index.vue'], resolve)
 const Login = resolve => require(['../components/Login/login.vue'], resolve)
 const Register = resolve => require(['../components/Register/register.vue'], resolve)
-const studentIndex = resolve => require(['../components/MainPage/index.vue'], resolve)
+const MainPage = resolve => require(['../components/MainPage/index.vue'], resolve)
+const SearchBasic = resolve => require(['../components/search/basic.vue'], resolve)
 /*const studentInfo = resolve => require(['../components/Student/personalCenter.vue'], resolve)
 const teacherIndex = resolve => require(['../components/Teacher/index.vue'], resolve)
 const addOrder = resolve => require(['../components/Teacher/addOrder.vue'], resolve)
@@ -33,14 +34,14 @@ const routes = [
   },
   {
     path: '/MainPage/index',
-    component: studentIndex,
-    name: 'studentIndex'
-  }/*,
-  {
-    path: '/student/infopage',
-    component: studentInfo,
-    name: 'studentInfo'
+    component: MainPage,
+    name: 'mainpage'
   },
+  {
+    path: '/basic',
+    component: SearchBasic,
+    name: 'searchbasic'
+  }/*,
   {
     path: '/teacher/index',
     component: teacherIndex,
