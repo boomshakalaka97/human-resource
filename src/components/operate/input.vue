@@ -27,26 +27,33 @@
         </el-radio-group>
       </el-form-item>
     <el-form-item label="文化程度">
-      <el-select v-model="ruleForm.level" placeholder="文化程度">
-        <el-option label="高中" value="1"></el-option>
-        <el-option label="本科" value="2"></el-option>
-          <el-option label="研究生" value="3"></el-option>
+      <el-select v-model="ruleForm.level" placeholder="请选择">
+        <el-option
+          v-for="item in options1"
+          :key="item.levelId"
+          :label="item.education"
+          :value="item.levelId">
+        </el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="职务">
-      <el-select v-model="ruleForm.post" placeholder="职务">
-        <el-option label="总监" value="1"></el-option>
-        <el-option label="经理" value="2"></el-option>
-        <el-option label="主管" value="3"></el-option>
-        <el-option label="助理" value="4"></el-option>
-        <el-option label="工程师" value="5"></el-option>
+      <el-select v-model="ruleForm.post" placeholder="请选择">
+        <el-option
+          v-for="item in options2"
+          :key="item.postId"
+          :label="item.postName"
+          :value="item.postId">
+        </el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="职位级别">
-      <el-select v-model="ruleForm.rank" placeholder="级别">
-        <el-option label="级别1" value="1"></el-option>
-        <el-option label="级别2" value="2"></el-option>
-        <el-option label="级别3" value="3"></el-option>
+      <el-select v-model="ruleForm.rank" placeholder="请选择">
+        <el-option
+          v-for="item in options3"
+          :key="item.baseSalary"
+          :label="item.rankId"
+          :value="item.rankId">
+        </el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="籍贯" prop="birthplace">
@@ -70,12 +77,13 @@
     </el-form-item>
 
     <el-form-item label="所属部门">
-      <el-select v-model="ruleForm.depart" placeholder="部门">
-        <el-option label="技术部" value="1"></el-option>
-        <el-option label="推广部" value="2"></el-option>
-        <el-option label="客服部" value="3"></el-option>
-        <el-option label="财务部" value="4"></el-option>
-        <el-option label="行政部" value="5"></el-option>
+      <el-select v-model="ruleForm.depart" placeholder="请选择">
+        <el-option
+          v-for="item in options4"
+          :key="item.departId"
+          :label="item.departName"
+          :value="item.departId">
+        </el-option>
       </el-select>
     </el-form-item>
 
@@ -104,6 +112,7 @@
     import AllService from '../../services/allservice.js'
 
     var allService = new AllService()
+
     export default {
       data() {
         return {
@@ -165,23 +174,96 @@
             condition: [
               { required: true, message: '请选择入职状态', trigger: 'change' }
             ],
-          }
+          },
+          options1:[],
+          options2:[],
+          options3:[],
+          options4:[]
         };
+      },
+      mounted:function(){
+        this.getAllEducationLevel();
+        this.getAllPostName();
+        this.getAllRank();
+        this.getAllDepartName();
       },
       methods: {
         submitForm(formName) {
           this.$refs[formName].validate((valid) => {
             if (valid) {
+
+              //this.getAllPostName()
+             // this.getAllRankId()
               this.input()
+
             }
           })
-            // if (valid) {
-            //   alert('submit!');
-            // } else {
-            //   console.log('error submit!!');
-            //   return false;
-            // }
-          // });
+        },
+        getAllEducationLevel(){
+            var params={}
+            allService.getAllEducationLevel(params, (isOk, data) => {
+              if (isOk) {
+                console.log(data);
+                if(data.status == "false"){
+                  console.log(data);
+                  this.$message.error(data);
+                }else {
+                  this.options1=data.data;
+                }
+              } else {
+                this.$alert("读取失败！")
+              }
+            })
+        },
+        getAllPostName(){
+          var params={}
+          allService.getAllPostName(params, (isOk, data) => {
+            if (isOk) {
+              console.log(data);
+              if(data.status == "false"){
+                console.log(data);
+                this.$message.error(data);
+              }else {
+
+                this.options2=data.data;
+              }
+            } else {
+              this.$alert("读取失败！")
+            }
+          })
+        },
+        getAllRank(){
+            var params={}
+            allService.getAllRank(params, (isOk, data) => {
+              if (isOk) {
+                console.log(data);
+                if(data.status == "false"){
+                  console.log(data);
+                  this.$message.error(data);
+                }else {
+                  this.options3=data.data;
+                }
+              } else {
+                this.$alert("读取失败！")
+              }
+            })
+        },
+        getAllDepartName(){
+          var params={}
+          allService.getAllDepartName(params, (isOk, data) => {
+            if (isOk) {
+              console.log(data);
+              if(data.status == "false"){
+                console.log(data);
+                this.$message.error(data);
+              }else {
+
+                this.options4=data.data;
+              }
+            } else {
+              this.$alert("读取失败！")
+            }
+          })
         },
         input () {
           var params={
@@ -203,6 +285,10 @@
             nature_work:this.ruleForm.nature_work,
             situation:this.ruleForm.condition,
           }
+
+
+
+
 
           allService.addMessage(params, (isOk, data) => {
             if (isOk) {

@@ -7,8 +7,16 @@ export default class AllService {
       addMessage: '/employee/add',
       signUp: '/user/signUp',
       getEmployeeByNature_work:'/employee/findByNature_work',
+      getEmployeeByNature_workConnect:'/employee/findByNature_workConnect',
       getEmployeeBySituation:'/employee/findBySituation',
+      getEmployeeBySituationConnect:'/employee/findBySituationConnect',
       getAllEmployee:'/employee/findAllEmployee',
+      getAllEmployeeConnect:'/employee/findAllEmployeeConnect',//emloyee和depart和post的连接查询
+      getAllEducationLevel:'/education_level/findAllLevel',
+      getAllPostName:'/post/findAllPost',
+      getAllRank:'/rank/findAllRank',
+      getAllDepartName:'/depart/findAllDepart',
+
       getOrderDetailByStudentId: '/order/findByStudentId',
       getOrderDetailByTeacherId: '/order/findByTeacherId',
       getTimeSlotDetail: '/timeSlot/find',
@@ -142,6 +150,17 @@ export default class AllService {
       }
     }, "application/json");
   }
+
+  getEmployeeByNature_workConnect(params, callback){
+    var url = this.host + this.method.getEmployeeByNature_workConnect;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+
   getEmployeeBySituation(params, callback){
     var url = this.host + this.method.getEmployeeBySituation;
     var type = 'post';
@@ -152,8 +171,65 @@ export default class AllService {
     }, "application/json");
   }
 
+  getEmployeeBySituationConnect(params, callback){
+    var url = this.host + this.method.getEmployeeBySituationConnect;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+
   getAllEmployee(params,callback){
     var url = this.host + this.method.getAllEmployee;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  getAllEmployeeConnect(params,callback){
+    var url = this.host + this.method.getAllEmployeeConnect;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+
+  getAllEducationLevel(params,callback){
+    var url = this.host + this.method.getAllEducationLevel;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+
+  getAllPostName(params,callback){
+    var url = this.host + this.method.getAllPostName;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  getAllRank(params,callback){
+    var url = this.host + this.method.getAllRank;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  getAllDepartName(params,callback){
+    var url = this.host + this.method.getAllDepartName;
     var type = 'post';
     return this.bizRequest(url, params, type, function(isOk, data) {
       if (callback) {

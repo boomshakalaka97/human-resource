@@ -1,8 +1,8 @@
 <template>
 <div>
-  <el-row :gutter="20">
-    <el-col :span="12">
-      <el-tabs v-model="activeName0" @tab-click="handleClick">
+  <el-row :gutter="20" >
+    <el-col :span="20">
+      <el-tabs v-model="activeName0" stretch="true" @tab-click="handleClick">
       <el-tab-pane label="在职"name="first">
         <el-table
           :data="tableData0"
@@ -22,18 +22,16 @@
             label="性别">
           </el-table-column>
           <el-table-column
-            prop="depart_name"
-            label="工作部门">
+            prop="departId"
+            label="部门编码">
           </el-table-column>
-          <el-table-column prop="post_name" label="职务">
-           <template slot-scope="scope"><!--加入跳转-->
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)"
-              >详细编辑</el-button>
-
+          <el-table-column prop="postId" label="职务编码">
+          </el-table-column>
+          <el-table-column>
+            <template slot-scope="scope">
+            <el-button type="primary" icon="el-icon-edit" circle>
+            </el-button>
             </template>
-
           </el-table-column>
         </el-table>
       </el-tab-pane>
@@ -56,16 +54,17 @@
             label="性别">
           </el-table-column>
           <el-table-column
-            prop="depart_name"
-            label="工作部门">
+            prop="departId"
+            label="部门编码">
           </el-table-column>
           <el-table-column
-            prop="post_name"
-            label="职务">
+            prop="postId"
+            label="职务编码">
+          </el-table-column>
+          <el-table-column>
             <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+              <el-button type="primary" icon="el-icon-edit" circle>
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -89,16 +88,17 @@
             label="性别">
           </el-table-column>
           <el-table-column
-            prop="depart_name"
-            label="工作部门">
+            prop="departId"
+            label="部门编码">
           </el-table-column>
           <el-table-column
-            prop="post_name"
-            label="职务">
+            prop="postId"
+            label="职务编码">
+          </el-table-column>
+          <el-table-column>
             <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+              <el-button type="primary" icon="el-icon-edit" circle>
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -122,24 +122,25 @@
             label="性别">
           </el-table-column>
           <el-table-column
-            prop="depart_name"
+            prop="departId"
             label="工作部门">
           </el-table-column>
           <el-table-column
-            prop="post_name"
+            prop="postId"
             label="职务">
+          </el-table-column>
+          <el-table-column>
             <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+              <el-button type="primary" icon="el-icon-edit" circle>
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
       </el-tab-pane>
-      </el-tabs>
+      <!--</el-tabs>
     </el-col>
     <el-col :span="8">
-      <el-tabs v-model="activeName0" @tab-click="handleClick">
+      <el-tabs v-model="activeName0" @tab-click="handleClick">-->
           <el-tab-pane label="试用期"name="fifth">
             <el-table
               :data="tableData4"
@@ -159,16 +160,17 @@
                 label="性别">
               </el-table-column>
               <el-table-column
-                prop="depart_name"
-                label="工作部门">
+                prop="departId"
+                label="部门编码">
               </el-table-column>
               <el-table-column
-                prop="post_name"
-                label="职务">
+                prop="postId"
+                label="职务编码">
+              </el-table-column>
+              <el-table-column>
                 <template slot-scope="scope">
-                  <el-button
-                    size="mini"
-                    @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+                  <el-button type="primary" icon="el-icon-edit" circle>
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -192,16 +194,17 @@
                 label="性别">
               </el-table-column>
               <el-table-column
-                prop="depart_name"
-                label="工作部门">
+                prop="departId"
+                label="部门编码">
               </el-table-column>
               <el-table-column
-                prop="post_name"
-                label="职务">
+                prop="postId"
+                label="职务编码">
+              </el-table-column>
+              <el-table-column>
                 <template slot-scope="scope">
-                  <el-button
-                    size="mini"
-                    @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+                  <el-button type="primary" icon="el-icon-edit" circle>
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -251,11 +254,9 @@
                 console.log(data);
                 this.$message.error(data);
               }else {
-                //取部门名？
-                //取职位名？
-                //this.tableData0=this.service.getDepartByDepartId(data.data:)
+
                 this.tableData0=data.data;
-                // this.$message.success("登录成功！");
+
               }
             } else {
               this.$alert("查询失败")
