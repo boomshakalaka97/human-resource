@@ -25,9 +25,15 @@
             prop="depart_name"
             label="工作部门">
           </el-table-column>
-          <el-table-column
-            prop="post_name"
-            label="职务">
+          <el-table-column prop="post_name" label="职务">
+           <template slot-scope="scope"><!--加入跳转-->
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)"
+              >详细编辑</el-button>
+
+            </template>
+
           </el-table-column>
         </el-table>
       </el-tab-pane>
@@ -56,6 +62,11 @@
           <el-table-column
             prop="post_name"
             label="职务">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+            </template>
           </el-table-column>
         </el-table>
       </el-tab-pane>
@@ -84,6 +95,11 @@
           <el-table-column
             prop="post_name"
             label="职务">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+            </template>
           </el-table-column>
         </el-table>
       </el-tab-pane>
@@ -112,6 +128,11 @@
           <el-table-column
             prop="post_name"
             label="职务">
+            <template slot-scope="scope">
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+            </template>
           </el-table-column>
         </el-table>
       </el-tab-pane>
@@ -144,6 +165,11 @@
               <el-table-column
                 prop="post_name"
                 label="职务">
+                <template slot-scope="scope">
+                  <el-button
+                    size="mini"
+                    @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+                </template>
               </el-table-column>
             </el-table>
           </el-tab-pane>
@@ -172,6 +198,11 @@
               <el-table-column
                 prop="post_name"
                 label="职务">
+                <template slot-scope="scope">
+                  <el-button
+                    size="mini"
+                    @click="handleEdit(scope.$index, scope.row)">详细编辑</el-button>
+                </template>
               </el-table-column>
             </el-table>
           </el-tab-pane>
@@ -198,6 +229,10 @@
 
       },
       methods: {
+        //按钮跳转+参数
+       /*/ handleEdit:function(){
+          var emid=this.
+        },*/
         handleClick(tab, event) {//想获得table中所选的label值，并调用令一个函数返回查询结果
           console.log(tab, event);
           this.fillIn()
@@ -216,6 +251,9 @@
                 console.log(data);
                 this.$message.error(data);
               }else {
+                //取部门名？
+                //取职位名？
+                //this.tableData0=this.service.getDepartByDepartId(data.data:)
                 this.tableData0=data.data;
                 // this.$message.success("登录成功！");
               }
