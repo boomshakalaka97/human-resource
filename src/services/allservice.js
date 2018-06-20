@@ -4,6 +4,7 @@ export default class AllService {
     this.fileHost = process.env.fileHost
     this.method = {
       signIn: '/user/signIn',
+      addMessage: '/employee/add',
       signUp: '/user/signUp',
       getEmployeeByNature_work:'/employee/findByNature_work',
       getEmployeeBySituation:'/employee/findBySituation',
@@ -17,7 +18,7 @@ export default class AllService {
       deleteTimeSlotById: '/timeSlot/delete',
       getTeacherTable: '/teacher/findAllTeacher',
       addOrder: '/order/add',
-      addMessage: '/message/add',
+
       deleteMessage: '/message/delete',
       getTeacherByName: '/teacher/findTeacherByName',
       getAllDepart: '/depart/findAll',
@@ -113,7 +114,15 @@ export default class AllService {
       }
     }, "application/json");
   }
-
+  addMessage(params,callback){
+    var url = this.host + this.method.addMessage;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
   signUp(params, callback) {
     var url = this.host + this.method.signUp;
     var type = 'post';
@@ -245,15 +254,7 @@ export default class AllService {
       }
     }, "application/json");
   }
-  addMessage(params,callback){
-    var url = this.host + this.method.addMessage;
-    var type = 'post';
-    return this.bizRequest(url, params, type, function(isOk, data) {
-      if (callback) {
-        callback(isOk, data);
-      }
-    }, "application/json");
-  }
+
   updatePassword(params,callback){
     var url = this.host + this.method.updatePassword;
     var type = 'post';
