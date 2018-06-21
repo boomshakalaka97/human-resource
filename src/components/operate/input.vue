@@ -273,7 +273,7 @@
             nation:this.ruleForm.nation,
             birth:this.ruleForm.birth,
             marriage:this.ruleForm.marry,
-            level_id:this.ruleForm.level,
+            levelId:this.ruleForm.level,
             postId:this.ruleForm.post,
             rankId:this.ruleForm.rank,
             birthplace:this.ruleForm.birthplace,
@@ -282,7 +282,7 @@
             address:this.ruleForm.address,
             departId:this.ruleForm.depart,
             datecome:this.ruleForm.date2,
-            nature_work:this.ruleForm.nature_work,
+            natureWork:this.ruleForm.nature_work,
             situation:this.ruleForm.condition,
           }
 
