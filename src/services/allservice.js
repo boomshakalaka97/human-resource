@@ -11,11 +11,21 @@ export default class AllService {
       getEmployeeBySituation:'/employee/findBySituation',
       getEmployeeBySituationConnect:'/employee/findBySituationConnect',
       getAllEmployee:'/employee/findAllEmployee',
-      getAllEmployeeConnect:'/employee/findAllEmployeeConnect',//emloyee和depart和post的连接查询
+      getEmployeeVague:'/employee/findEmployeeVague',
+      updateEmployee:'/employee/update',
+      deleteEmployee:'/employee/delete',
       getAllEducationLevel:'/education_level/findAllLevel',
       getAllPostName:'/post/findAllPost',
       getAllRank:'/rank/findAllRank',
       getAllDepartName:'/depart/findAllDepart',
+      getDepartVague:'/depart/findDepartVague',
+      updateDepart:'/depart/update',
+      addDepart:'/depart/add',
+      deleteDepart:'/depart/delete',
+      setWage:'/wage_rules/update',
+      setSalary:'/rank/update',
+      getAllSalary:'/stuffsalary/findAllSalary',
+      salaryCalculate:'/stuffsalary/salarycalculate',
 
       getOrderDetailByStudentId: '/order/findByStudentId',
       getOrderDetailByTeacherId: '/order/findByTeacherId',
@@ -190,15 +200,6 @@ export default class AllService {
       }
     }, "application/json");
   }
-  getAllEmployeeConnect(params,callback){
-    var url = this.host + this.method.getAllEmployeeConnect;
-    var type = 'post';
-    return this.bizRequest(url, params, type, function(isOk, data) {
-      if (callback) {
-        callback(isOk, data);
-      }
-    }, "application/json");
-  }
 
   getAllEducationLevel(params,callback){
     var url = this.host + this.method.getAllEducationLevel;
@@ -230,6 +231,106 @@ export default class AllService {
   }
   getAllDepartName(params,callback){
     var url = this.host + this.method.getAllDepartName;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  addDepart(params,callback){
+    var url = this.host + this.method.addDepart;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  setWage(params,callback){
+    var url = this.host + this.method.setWage;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  setSalary(params,callback){
+    var url = this.host + this.method.setSalary;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+
+  getAllSalary(params,callback){
+    var url = this.host + this.method.getAllSalary;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  salaryCalculate(params,callback){
+    var url = this.host + this.method.salaryCalculate;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  updateDepart(params,callback){
+    var url = this.host + this.method.updateDepart;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  deleteDepart(params,callback){
+    var url = this.host + this.method.deleteDepart;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  getDepartVague(params,callback){
+    var url = this.host + this.method.getDepartVague;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  getEmployeeVague(params,callback){
+    var url = this.host + this.method.getEmployeeVague;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  updateEmployee(params,callback){
+    var url = this.host + this.method.updateEmployee;
+    var type = 'post';
+    return this.bizRequest(url, params, type, function(isOk, data) {
+      if (callback) {
+        callback(isOk, data);
+      }
+    }, "application/json");
+  }
+  deleteEmployee(params,callback){
+    var url = this.host + this.method.deleteEmployee;
     var type = 'post';
     return this.bizRequest(url, params, type, function(isOk, data) {
       if (callback) {

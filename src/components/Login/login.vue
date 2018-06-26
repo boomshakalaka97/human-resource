@@ -20,6 +20,7 @@
 
 <script>
   import AllService from '../../services/allservice.js'
+  import  '../../vuex/store.js'
 
   var allService = new AllService()
   export default {
@@ -62,9 +63,11 @@
               console.log(data);
               this.$message.error(data);
             }else {
+                this.$store.dispatch('loginAction');
+                this.$store.dispatch('SETUSERNAME',data.data.userName);
+                this.$store.dispatch('SETIDENTITY',data.data.authority);
 
-
-                this.$router.push('/index');
+                this.$router.push('/left');
 
               this.$message.success("登录成功！");
             }

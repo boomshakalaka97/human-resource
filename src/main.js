@@ -6,14 +6,18 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import $ from 'jquery';
+import Vuex from "vuex"
+import store from './vuex/store'
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
+Vue.use(Vuex)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

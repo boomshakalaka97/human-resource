@@ -7,8 +7,11 @@ const Login = resolve => require(['../components/Login/login.vue'], resolve)
 const Register = resolve => require(['../components/Register/register.vue'], resolve)
 const left = resolve => require(['../components/MainPage/left.vue'], resolve)
 const input = resolve => require(['../components/operate/input.vue'], resolve)
-const basic = resolve => require(['../components/search/basicEmployee.vue'], resolve)
-
+const basicemployee = resolve => require(['../components/search/basicEmployee.vue'], resolve)
+const basicdepart = resolve => require(['../components/search/basicDepart.vue'],resolve)
+const inputdepart = resolve => require(['../components/operate/inputdepart.vue'], resolve)
+const inputattendance = resolve => require(['../components/operate/inputattendance.vue'],resolve)
+const salary_show = resolve => require(['../components/operate/salary_show.vue'],resolve)
 /*const studentInfo = resolve => require(['../components/Student/personalCenter.vue'], resolve)
 const teacherIndex = resolve => require(['../components/Teacher/index.vue'], resolve)
 const addOrder = resolve => require(['../components/Teacher/addOrder.vue'], resolve)
@@ -20,7 +23,7 @@ Vue.use(Vuex)
 
 const routes = [
   {
-    path: '/',
+    path: '',
     component: index,
     name: 'index'
   },
@@ -52,9 +55,45 @@ const routes = [
     path: '/',
     component: left,
     children: [{
-      path: 'basic',
+      path: 'basicemployee',
       name: 'basic',
-      component: basic
+      component: basicemployee
+    }]
+  },
+  {
+    path: '/',
+    component: left,
+    children: [{
+      path: '/inputdepart',
+      name: 'basic1',
+      component: inputdepart
+    }]
+  },
+  {
+    path: '/',
+    component: left,
+    children: [{
+      path: '/basicdepart',
+      name: 'basic2',
+      component: basicdepart
+    }]
+  },
+  {
+    path: '/',
+    component: left,
+    children: [{
+      path: '/inputattendance',
+      name: 'basic3',
+      component: inputattendance
+    }]
+  },
+  {
+    path: '/',
+    component: left,
+    children: [{
+      path: '/salary_show',
+      name: 'basic4',
+      component: salary_show
     }]
   },
   /*,
